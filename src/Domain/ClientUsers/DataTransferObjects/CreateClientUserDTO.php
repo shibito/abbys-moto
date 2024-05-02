@@ -2,8 +2,6 @@
 
     namespace Domain\ClientUsers\DataTransferObjects;
 
-    use Domain\Users\Models\User;
-
     class CreateClientUserDTO
     {
         public function __construct(

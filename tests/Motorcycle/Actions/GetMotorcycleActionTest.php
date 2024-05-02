@@ -28,7 +28,7 @@
         {
             $result = (new GetMotorcycleAction())("ninja");
 
-            dd($result->);
+            dd($result->toJson());
 
             $this->assertCount(4, $result['total']);
 

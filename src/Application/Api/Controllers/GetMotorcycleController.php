@@ -10,10 +10,14 @@
 
     class GetMotorcycleController extends Controller
     {
+        public function __construct(
+            public GetMotorcycleAction $getMotorcycleAction
+        ) {}
+
         public function __invoke(GetMotorcycleRequest $request): MotorcycleCollection
         {
             $search = $request->validated()['search'] ?? null;
 
-            return (new GetMotorcycleAction())($search);
+            return ($this->getMotorcycleAction)($search);
         }
     }

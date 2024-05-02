@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Policies;
+    namespace Application\Api\Policies;
 
     use Domain\ClientUsers\Models\ClientUser;
     use Domain\Users\Models\User;

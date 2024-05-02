@@ -6,14 +6,15 @@
     use Application\Api\Requests\CreateClientUserRequest;
     use Domain\ClientUsers\Actions\CreateClientUserAction;
     use Domain\ClientUsers\DataTransferObjects\CreateClientUserDTO;
+    use Domain\ClientUsers\Models\ClientUser;
 
     class CreateClientUserController extends Controller
     {
         public function __construct(
-            public CreateClientUserAction $createClientUserAction
+            public CreateClientUserAction $createClientUserAction,
         ) {}
 
-        public function __invoke(CreateClientUserRequest $createClientUserRequest)
+        public function __invoke(CreateClientUserRequest $createClientUserRequest): ClientUser
         {
             $request = $createClientUserRequest->validated();
 

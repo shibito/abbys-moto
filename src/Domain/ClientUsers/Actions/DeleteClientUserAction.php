@@ -8,11 +8,9 @@
     {
         public function __invoke(
             string $clientUserId,
-        )
+        ): ?bool
         {
-            $clientUser = ClientUser::where('id', $clientUserId)->first();
-
-            return $clientUser->delete();
+            return ClientUser::where('id', $clientUserId)->first()->delete();
         }
 
     }
