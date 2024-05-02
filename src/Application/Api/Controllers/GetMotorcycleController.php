@@ -5,6 +5,7 @@
     use App\Http\Controllers\Controller;
     use Application\Api\Collections\MotorcycleCollection;
     use Application\Api\Requests\GetMotorcycleRequest;
+    use Domain\Motorcycle\Actions\GetMotorcycleAction;
     use Domain\Motorcycle\Models\Motorcycle;
 
     class GetMotorcycleController extends Controller
@@ -13,6 +14,6 @@
         {
             $search = $request->validated()['search'] ?? null;
 
-            return new MotorcycleCollection(Motorcycle::query()->search($search)->paginate());
+            return (new GetMotorcycleAction())($search);
         }
     }

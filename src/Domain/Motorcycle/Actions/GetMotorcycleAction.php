@@ -2,15 +2,19 @@
 
     namespace Domain\Motorcycle\Actions;
 
+    use Application\Api\Collections\MotorcycleCollection;
+    use Domain\Motorcycle\Models\Motorcycle;
+
     class GetMotorcycleAction
     {
-        public function __construct()
+        public function __invoke(
+            ?string $search
+        ): MotorcycleCollection
         {
-        }
-
-        public function __invoke()
-        {
-            // TODO: Implement __invoke() method.
+            return new MotorcycleCollection(Motorcycle::query()
+                ->search($search)
+                ->paginate()
+            );
         }
 
     }
