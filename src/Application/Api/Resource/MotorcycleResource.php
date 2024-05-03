@@ -2,6 +2,7 @@
 
 namespace Application\Api\Resource;
 
+use Application\Api\Collections\MotorcycleStockCollection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -55,7 +56,8 @@ class MotorcycleResource extends JsonResource
             'fuel_consumption' => $this->fuel_consumption,
             'lubrication' => $this->lubrication,
             'valves_per_cylinder' => $this->valves_per_cylinder,
-            'stocks' => new MotorcycleStockResource($this->whenLoaded('stocks')),
+            'stocks' => new MotorcycleStockCollection($this->whenLoaded('stocks')),
+//            'stocks_count' => $this->whenLoaded('stocks')
         ];
     }
 }

@@ -4,13 +4,12 @@
 
     use Illuminate\Foundation\Http\FormRequest;
 
-    class GetMotorcycleRequest extends FormRequest
+    class GetRentRequest extends FormRequest
     {
         public function rules(): array
         {
             return [
-                'search' => 'string|nullable',
-                'stock' => 'bool|nullable',
+                'returnd' => 'boolean|nullable'
             ];
         }
 

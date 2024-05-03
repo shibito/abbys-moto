@@ -3,16 +3,21 @@
     namespace Domain\Motorcycle\Actions;
 
     use Application\Api\Collections\MotorcycleCollection;
+    use Domain\Motorcycle\DataTransferObjects\GetMotorcycleDTO;
     use Domain\Motorcycle\Models\Motorcycle;
 
     class GetMotorcycleAction
     {
         public function __invoke(
-            ?string $search
+            GetMotorcycleDTO $getMotorcycleDTO
         ): MotorcycleCollection
         {
             return new MotorcycleCollection(Motorcycle::query()
-                ->search($search)
+//                ->has('stocks')
+                ->hasStock($getMotorcycleDTO->stock)
+                ->search($getMotorcycleDTO->search)
+                ->with(['stocks'])
+                ->withCount('stocks')
                 ->paginate()
             );
         }

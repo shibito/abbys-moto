@@ -7,6 +7,7 @@
     use Application\Api\Controllers\GetClientUserController;
     use Application\Api\Controllers\GetMotorcycleController;
     use Application\Api\Controllers\GetMotorcycleStockController;
+    use Application\Api\Controllers\GetRentController;
     use Application\Api\Controllers\LoginController;
     use Application\Api\Controllers\LogoutController;
     use Application\Api\Controllers\RentInController;
@@ -45,9 +46,9 @@
         });
 
         Route::prefix('rent')->group(function () {
+            Route::get('/',GetRentController::class);
             Route::post('/in', RentInController::class);
             Route::post('/out', RentOutController::class);
-
         });
 
     });

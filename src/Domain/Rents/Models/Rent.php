@@ -4,6 +4,7 @@
 
     use Domain\ClientUsers\Models\ClientUser;
     use Domain\Motorcycle\Models\MotorcycleStock;
+    use Domain\Rents\QueryBuilders\RentQueryBuilder;
     use Illuminate\Database\Eloquent\Concerns\HasUuids;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
@@ -35,6 +36,11 @@
         public function motorcycleStock(): BelongsTo
         {
             return $this->belongsTo(MotorcycleStock::class);
+        }
+
+        public function newEloquentBuilder($query): RentQueryBuilder
+        {
+            return new RentQueryBuilder($query);
         }
 
         protected function casts(): array

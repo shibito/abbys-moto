@@ -10,4 +10,9 @@
         {
             return $term ? $this->whereFullText(['make', 'model', 'year', 'type', 'displacement', 'engine', 'power', 'torque', 'ignition', 'gearbox', 'transmission', 'clutch', 'wheelbase', 'emission', 'fuel_system', 'cooling'], $term) : $this;
         }
+
+        public function hasStock(?bool $stock = null): self
+        {
+            return $stock ? $this->has('stocks') : $this;
+        }
     }

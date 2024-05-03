@@ -6,6 +6,7 @@
     use Application\Api\Collections\MotorcycleCollection;
     use Application\Api\Requests\GetMotorcycleRequest;
     use Domain\Motorcycle\Actions\GetMotorcycleAction;
+    use Domain\Motorcycle\DataTransferObjects\GetMotorcycleDTO;
     use Domain\Motorcycle\Models\Motorcycle;
 
     class GetMotorcycleController extends Controller
@@ -16,8 +17,6 @@
 
         public function __invoke(GetMotorcycleRequest $request): MotorcycleCollection
         {
-            $search = $request->validated()['search'] ?? null;
-
-            return ($this->getMotorcycleAction)($search);
+            return ($this->getMotorcycleAction)(new GetMotorcycleDTO(...$request->validated()));
         }
     }
