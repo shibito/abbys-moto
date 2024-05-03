@@ -9,7 +9,7 @@
     class GetMotorcycleStockController extends Controller
     {
         public function __construct(
-            public GetMotorcycleStockAction $getMotorcycleStockAction
+            private readonly GetMotorcycleStockAction $getMotorcycleStockAction
         ) {}
 
         public function __invoke(): MotorcycleStockCollection

@@ -18,8 +18,6 @@ class LoginController extends Controller
         LoginRequest $loginRequest
     )
     {
-        $data = new LoginDataTransferObject(...$loginRequest->validated());
-
-        return ($this->loginAction)($data);
+        return ($this->loginAction)(new LoginDataTransferObject(...$loginRequest->validated()));
     }
 }

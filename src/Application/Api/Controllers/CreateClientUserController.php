@@ -11,13 +11,15 @@
     class CreateClientUserController extends Controller
     {
         public function __construct(
-            public CreateClientUserAction $createClientUserAction,
+            private readonly CreateClientUserAction $createClientUserAction,
         ) {}
 
-        public function __invoke(CreateClientUserRequest $createClientUserRequest): ClientUser
+        public function __invoke(
+            CreateClientUserRequest $createClientUserRequest
+        ): ClientUser
         {
-            $request = $createClientUserRequest->validated();
+            $validated = $createClientUserRequest->validated();
 
-            return ($this->createClientUserAction)(new CreateClientUserDTO(...$request));
+            return ($this->createClientUserAction)(new CreateClientUserDTO(...$validated));
         }
     }

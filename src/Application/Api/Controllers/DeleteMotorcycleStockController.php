@@ -9,7 +9,7 @@
     class DeleteMotorcycleStockController extends Controller
     {
         public function __construct(
-            public DeleteMotorcycleStockAction $deleteMotorcycleStockAction
+            private readonly DeleteMotorcycleStockAction $deleteMotorcycleStockAction
         ) {}
 
         public function __invoke(

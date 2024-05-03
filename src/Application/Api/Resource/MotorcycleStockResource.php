@@ -14,7 +14,6 @@
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
                 'id' => $this->id,
-                'id' => $this->id,
                 'plate' => $this->plate,
                 'details' => $this->details,
 

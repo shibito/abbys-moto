@@ -11,7 +11,7 @@
     class GetMotorcycleController extends Controller
     {
         public function __construct(
-            public GetMotorcycleAction $getMotorcycleAction
+            private readonly GetMotorcycleAction $getMotorcycleAction
         ) {}
 
         public function __invoke(GetMotorcycleRequest $request): MotorcycleCollection

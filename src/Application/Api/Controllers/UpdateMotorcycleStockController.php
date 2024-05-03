@@ -11,15 +11,15 @@
     class UpdateMotorcycleStockController extends Controller
     {
         public function __construct(
-            public UpdateMotorcycleStockAction $updateMotorcycleStockAction
+            private readonly UpdateMotorcycleStockAction $updateMotorcycleStockAction
         ) {}
 
         public function __invoke(
             UpdateMotorcycleStockRequest $updateMotorcycleStockRequest
         ): MotorcycleStockResource
         {
-            $request = $updateMotorcycleStockRequest->validated();
+            $validated = $updateMotorcycleStockRequest->validated();
 
-            return new MotorcycleStockResource(($this->updateMotorcycleStockAction)(new UpdateMotorcycleStockDTO(...$request)));
+            return new MotorcycleStockResource(($this->updateMotorcycleStockAction)(new UpdateMotorcycleStockDTO(...$validated)));
         }
     }

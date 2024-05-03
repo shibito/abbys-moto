@@ -9,15 +9,15 @@
     class DeleteClientUserController extends Controller
     {
         public function __construct(
-            public DeleteClientUserAction $deleteClientUserAction
+            private readonly DeleteClientUserAction $deleteClientUserAction
         ) {}
 
         public function __invoke(
             DeleteClientUserRequest $deleteClientUserRequest
         )
         {
-            $validate = $deleteClientUserRequest->validated();
+            $validated = $deleteClientUserRequest->validated();
 
-            return ($this->deleteClientUserAction)($validate['client_user_id']);
+            return ($this->deleteClientUserAction)($validated['client_user_id']);
         }
     }

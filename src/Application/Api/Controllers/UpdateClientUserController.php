@@ -11,15 +11,15 @@
     class UpdateClientUserController extends Controller
     {
         public function __construct(
-            public UpdateClientUserAction $updateClientUserAction
+            private readonly UpdateClientUserAction $updateClientUserAction
         ) {}
 
         public function __invoke(
             UpdateClientUserRequest $updateClientUserRequest
         ): ClientUserResource
         {
-            $request = $updateClientUserRequest->validated();
+            $validated = $updateClientUserRequest->validated();
 
-            return new ClientUserResource(($this->updateClientUserAction)(new UpdateClientUserDTO(...$request)));
+            return new ClientUserResource(($this->updateClientUserAction)(new UpdateClientUserDTO(...$validated)));
         }
     }

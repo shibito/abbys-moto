@@ -11,13 +11,15 @@
     class CreateMotorcycleStockController extends Controller
     {
         public function __construct(
-            public CreateMotorcycleStockAction $createMotorcycleStockAction
+            private readonly CreateMotorcycleStockAction $createMotorcycleStockAction
         ) {}
 
-        public function __invoke(CreateMotorcycleStockRequest $motorcycleStockRequest): MotorcycleStock
+        public function __invoke(
+            CreateMotorcycleStockRequest $motorcycleStockRequest
+        ): MotorcycleStock
         {
-            $request = $motorcycleStockRequest->validated();
+            $validated = $motorcycleStockRequest->validated();
 
-            return ($this->createMotorcycleStockAction)(new CreateMotorcycleStockDTO(...$request));
+            return ($this->createMotorcycleStockAction)(new CreateMotorcycleStockDTO(...$validated));
         }
     }

@@ -8,7 +8,7 @@
     class GetClientUserController extends Controller
     {
         public function __construct(
-            public GetClientUserAction $getClientUserAction
+            private readonly GetClientUserAction $getClientUserAction
         ) {}
 
         public function __invoke()
