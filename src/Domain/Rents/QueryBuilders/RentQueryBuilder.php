@@ -9,6 +9,6 @@
     {
         public function returned(?bool $returned = null): self
         {
-            return $returned ? $this->where('returned', $returned) : $this;
+            return $returned !== null ? $this->where('returned', $returned) : $this;
         }
     }

@@ -16,6 +16,6 @@
             GetRentRequest $getRentRequest
         )
         {
-            return ($this->getRentAction)($getRentRequest->validated()['returnd']);
+            return ($this->getRentAction)($getRentRequest->validated()['returned'] ?? null);
         }
     }

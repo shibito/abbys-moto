@@ -4,6 +4,7 @@
 
     use App\Http\Controllers\Controller;
     use Application\Api\Requests\RentOutRequest;
+    use Application\Api\Resource\RentResource;
     use Domain\Rents\Actions\RentOutAction;
     use Domain\Rents\DataTransferObjects\RentOutDTO;
 
@@ -15,10 +16,10 @@
 
         public function __invoke(
             RentOutRequest $rentOutRequest
-        )
+        ): RentResource
         {
             $validated = $rentOutRequest->validated();
 
-            return ($this->rentOutAction)(new RentOutDTO(...$validated));
+            return new RentResource(($this->rentOutAction)(new RentOutDTO(...$validated)));
         }
     }

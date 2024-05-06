@@ -8,9 +8,13 @@
     {
         public function __invoke(
             string $clientUserId,
-        ): ?bool
+        ): array
         {
-            return ClientUser::where('id', $clientUserId)->first()->delete();
+            ClientUser::where('id', $clientUserId)->first()->deleteOrFail();
+
+            return [
+                'message' => 'Client User Deleted',
+            ];
         }
 
     }

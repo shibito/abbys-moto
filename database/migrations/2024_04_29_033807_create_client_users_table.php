@@ -11,6 +11,9 @@
                 $table->uuid('id')->primary();
                 $table->string('firstname');
                 $table->string('lastname');
+                $table->text('address')->nullable();
+                $table->string('phone1')->nullable();
+                $table->string('phone2')->nullable();
                 $table->foreignUuid('user_id');
                 $table->timestamps();
             });

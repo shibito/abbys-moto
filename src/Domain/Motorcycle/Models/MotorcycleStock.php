@@ -2,6 +2,8 @@
 
     namespace Domain\Motorcycle\Models;
 
+    use Domain\Motorcycle\QueryBuilder\MotorcycleStockBuilder;
+    use Domain\Rents\Models\Rent;
     use Illuminate\Database\Eloquent\Concerns\HasUuids;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
@@ -20,6 +22,16 @@
         public function motorcycle(): BelongsTo
         {
             return $this->belongsTo(Motorcycle::class);
+        }
+
+        public function rented()
+        {
+            return $this->hasOne(Rent::class, 'motorcycle_stock_id');
+        }
+
+        public function newEloquentBuilder($query): MotorcycleStockBuilder
+        {
+            return new MotorcycleStockBuilder($query);
         }
 
         protected function casts()

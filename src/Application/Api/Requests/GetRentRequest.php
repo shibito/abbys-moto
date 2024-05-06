@@ -9,7 +9,7 @@
         public function rules(): array
         {
             return [
-                'returnd' => 'boolean|nullable'
+                'returned' => 'boolean|nullable'
             ];
         }
 

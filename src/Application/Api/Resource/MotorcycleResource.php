@@ -12,8 +12,6 @@ class MotorcycleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'id' => $this->id,
             'make' => $this->make,
             'model' => $this->model,
@@ -57,7 +55,8 @@ class MotorcycleResource extends JsonResource
             'lubrication' => $this->lubrication,
             'valves_per_cylinder' => $this->valves_per_cylinder,
             'stocks' => new MotorcycleStockCollection($this->whenLoaded('stocks')),
-//            'stocks_count' => $this->whenLoaded('stocks')
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

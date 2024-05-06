@@ -15,6 +15,9 @@
         protected $fillable = [
             'firstname',
             'lastname',
+            'address',
+            'phone1',
+            'phone2',
             'user_id',
         ];
 

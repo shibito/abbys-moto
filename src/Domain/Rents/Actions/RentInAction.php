@@ -10,13 +10,15 @@
     {
         public function __invoke(
             RentInDTO $rentInDTO,
-        ): RentResource
+        ): Rent
         {
             $rent = new Rent((array)$rentInDTO);
 
             $rent->save();
 
-            return new RentResource($rent);
+            $newRent = Rent::with(['clientUser', 'motorcycleStock', 'motorcycleStock.motorcycle'])->where('id', $rent->id)->first();
+
+            return $newRent->refresh();
         }
 
     }

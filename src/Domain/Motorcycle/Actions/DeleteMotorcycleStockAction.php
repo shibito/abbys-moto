@@ -8,9 +8,13 @@
     {
         public function __invoke(
             string $motorcycleStockId,
-        ): ?bool
+        ): array
         {
-            return MotorcycleStock::where('id', $motorcycleStockId)->first()->delete();
+            MotorcycleStock::where('id', $motorcycleStockId)->first()->delete();
+
+            return [
+                'message' => 'Motorcycle Stock Deleted',
+            ];
         }
 
     }

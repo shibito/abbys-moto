@@ -15,7 +15,9 @@
             private readonly GetMotorcycleAction $getMotorcycleAction
         ) {}
 
-        public function __invoke(GetMotorcycleRequest $request): MotorcycleCollection
+        public function __invoke(
+            GetMotorcycleRequest $request
+        ): MotorcycleCollection
         {
             return ($this->getMotorcycleAction)(new GetMotorcycleDTO(...$request->validated()));
         }

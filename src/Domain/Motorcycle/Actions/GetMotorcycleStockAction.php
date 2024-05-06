@@ -7,9 +7,15 @@
 
     class GetMotorcycleStockAction
     {
-        public function __invoke(): MotorcycleStockCollection
+        public function __invoke(
+            ?string $rented
+        ): MotorcycleStockCollection
         {
-            return new MotorcycleStockCollection(MotorcycleStock::query()->paginate());
+            return new MotorcycleStockCollection(MotorcycleStock::query()
+                ->with(['rented'])
+                ->rented($rented)
+                ->paginate()
+            );
         }
 
     }

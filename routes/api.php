@@ -30,7 +30,7 @@
         Route::prefix('client-users')->group(function () {
             Route::get('/', GetClientUserController::class);
             Route::post('/', CreateClientUserController::class);
-            Route::put('/', UpdateClientUserController::class);
+            Route::patch('/', UpdateClientUserController::class);
             Route::delete('/', DeleteClientUserController::class);
         });
 
@@ -40,7 +40,7 @@
             Route::prefix('stocks')->group(function () {
                 Route::get('/', GetMotorcycleStockController::class);
                 Route::post('/', CreateMotorcycleStockController::class);
-                Route::put('/', UpdateMotorcycleStockController::class);
+                Route::patch('/', UpdateMotorcycleStockController::class);
                 Route::delete('/', DeleteMotorcycleStockController::class);
             });
         });

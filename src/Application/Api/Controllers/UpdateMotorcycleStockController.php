@@ -16,10 +16,10 @@
 
         public function __invoke(
             UpdateMotorcycleStockRequest $updateMotorcycleStockRequest
-        ): MotorcycleStockResource
+        ): array
         {
             $validated = $updateMotorcycleStockRequest->validated();
 
-            return new MotorcycleStockResource(($this->updateMotorcycleStockAction)(new UpdateMotorcycleStockDTO(...$validated)));
+            return ['data' => new MotorcycleStockResource(($this->updateMotorcycleStockAction)(new UpdateMotorcycleStockDTO(...$validated)))];
         }
     }

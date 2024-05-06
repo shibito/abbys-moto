@@ -11,13 +11,12 @@
         public function toArray(Request $request): array
         {
             return [
-                'created_at' => $this->created_at,
-                'updated_at' => $this->updated_at,
                 'id' => $this->id,
                 'firstname' => $this->firstname,
                 'lastname' => $this->lastname,
-
                 'user_id' => $this->user_id,
+                'created_at' => $this->created_at,
+                'updated_at' => $this->updated_at,
             ];
         }
     }

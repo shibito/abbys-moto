@@ -4,6 +4,7 @@
 
     use App\Http\Controllers\Controller;
     use Application\Api\Requests\CreateMotorcycleStockRequest;
+    use Application\Api\Resource\MotorcycleStockResource;
     use Domain\Motorcycle\Actions\CreateMotorcycleStockAction;
     use Domain\Motorcycle\DataTransferObjects\CreateMotorcycleStockDTO;
     use Domain\Motorcycle\Models\MotorcycleStock;
@@ -16,10 +17,10 @@
 
         public function __invoke(
             CreateMotorcycleStockRequest $motorcycleStockRequest
-        ): MotorcycleStock
+        ): array
         {
             $validated = $motorcycleStockRequest->validated();
 
-            return ($this->createMotorcycleStockAction)(new CreateMotorcycleStockDTO(...$validated));
+            return ['data' => new MotorcycleStockResource(($this->createMotorcycleStockAction)(new CreateMotorcycleStockDTO(...$validated)))];
         }
     }

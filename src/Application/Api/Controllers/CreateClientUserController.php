@@ -4,9 +4,10 @@
 
     use App\Http\Controllers\Controller;
     use Application\Api\Requests\CreateClientUserRequest;
+    use Application\Api\Resource\ClientUserResource;
     use Domain\ClientUsers\Actions\CreateClientUserAction;
     use Domain\ClientUsers\DataTransferObjects\CreateClientUserDTO;
-    use Domain\ClientUsers\Models\ClientUser;
+    use Illuminate\Support\Facades\Auth;
 
     class CreateClientUserController extends Controller
     {
@@ -16,10 +17,10 @@
 
         public function __invoke(
             CreateClientUserRequest $createClientUserRequest
-        ): ClientUser
+        ): array
         {
-            $validated = $createClientUserRequest->validated();
+            $validated = collect($createClientUserRequest->validated())->merge(['user_id' => Auth::user()->id]);
 
-            return ($this->createClientUserAction)(new CreateClientUserDTO(...$validated));
+            return ['data' => new ClientUserResource(($this->createClientUserAction)(new CreateClientUserDTO(...$validated)))];
         }
     }

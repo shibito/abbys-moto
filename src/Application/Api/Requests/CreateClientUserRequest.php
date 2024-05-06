@@ -9,9 +9,11 @@
         public function rules(): array
         {
             return [
-                'firstname' => ['required'],
-                'lastname' => ['required'],
-                'user_id' => ['required', 'exists:users,id'],
+                'firstname' => ['string|required'],
+                'lastname' => ['string|required'],
+                'address' => ['string|nullable'],
+                'phone1' => ['string|nullable'],
+                'phone2' => ['string|nullable'],
             ];
         }
 

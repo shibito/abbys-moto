@@ -17,7 +17,9 @@
             $rent->returned = $rentOutDTO->returned;
             $rent->save();
 
-            return $rent->refresh();
+            $newRent = Rent::with(['clientUser', 'motorcycleStock', 'motorcycleStock.motorcycle'])->where('id', $rent->id)->first();
+
+            return $newRent->refresh();
         }
 
     }

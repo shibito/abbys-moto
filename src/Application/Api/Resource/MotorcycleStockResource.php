@@ -11,15 +11,14 @@
         public function toArray(Request $request): array
         {
             return [
-                'created_at' => $this->created_at,
-                'updated_at' => $this->updated_at,
                 'id' => $this->id,
                 'plate' => $this->plate,
                 'details' => $this->details,
-
                 'motorcycle_id' => $this->motorcycle_id,
-
                 'motorcycle' => new MotorcycleResource($this->whenLoaded('motorcycle')),
+                'rented' => new RentResource($this->whenLoaded('rented')),
+                'created_at' => $this->created_at,
+                'updated_at' => $this->updated_at,
             ];
         }
     }
