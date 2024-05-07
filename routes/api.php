@@ -24,7 +24,7 @@
         Route::get('/logout', LogoutController::class);
 
         Route::get('/user', function (Request $request) {
-            return $request->user();
+            return ['data' => $request->user()];
         });
 
         Route::prefix('client-users')->group(function () {
